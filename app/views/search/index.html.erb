@@ -4,16 +4,20 @@
   <section id="person-id">
     <h1><% person[:_id] %></h1>
     <h1>Name: <%= person[:name].capitalize %></h1>
-    <% if person[:photoUrl] %>
-      <%= image_tag "#{person[:photoUrl]}" %>
-    <% end %>
-    <% if person[:allies] %>
-      <h1>Allies: <%= person[:allies] %></h1>
+      <% if person[:photoUrl] %>
+        <%= image_tag "#{person[:photoUrl]}" %>
+      <% end %>
+    <% if !person[:allies].empty? %>
+      <% person[:allies].each do |ally| %>
+        <h1>Allies: <%= ally %></h1>
+      <% end %>
     <% else %>
       <%= "None" %>
     <% end %>
-    <% if person[:enemies] %>
-      <h1>Enemies: <%= person[:enemies] %></h1>
+    <% if !person[:enemies].empty? %>
+      <% person[:enemies].each do |enemy| %>
+        <h1>Enemies: <%= enemy %></h1>
+      <% end %>
     <% else %>
       <%= "None" %>
     <% end %>
